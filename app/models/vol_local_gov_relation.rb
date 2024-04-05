@@ -1,0 +1,2 @@
+class VolLocalGovRelation < ApplicationRecord
+end
