@@ -1,2 +1,0 @@
-class LocalStockRelationship < ApplicationRecord
-end
