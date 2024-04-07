@@ -1,0 +1,2 @@
+module LocalGovernment::HomesHelper
+end
