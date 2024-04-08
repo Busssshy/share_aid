@@ -7,7 +7,7 @@ class CreateStocks < ActiveRecord::Migration[6.1]
       t.date       :deadline
       t.integer    :amount
       t.text       :memo
-      t.timestamps
+      t.timestamps  null: false
     end
   end
 end
