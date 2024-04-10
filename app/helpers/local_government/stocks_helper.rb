@@ -1,0 +1,2 @@
+module LocalGovernment::StocksHelper
+end

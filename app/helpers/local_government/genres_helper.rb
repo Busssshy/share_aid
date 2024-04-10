@@ -1,0 +1,2 @@
+module LocalGovernment::GenresHelper
+end

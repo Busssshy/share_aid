@@ -1,0 +1,2 @@
+module LocalGovernment::NotificationsHelper
+end

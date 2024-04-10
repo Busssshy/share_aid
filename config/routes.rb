@@ -1,22 +1,32 @@
 Rails.application.routes.draw do
 
-  namespace :volunteer do
-    get 'homes/top'
-    get 'homes/about'
-  end
-  namespace :local_government do
-    get 'homes/top'
-  end
-  # 自治体用
+   # 自治体用
   devise_for :local_governments, controllers: {
     registrations: 'local_government/registrations',
     sessions: 'local_government/sessions'
   }
+
+  namespace :local_government do
+    root to: "homes#top"
+    resources :genres, only: [:new, :create, :index, :destroy]
+    resources :stocks, only: [:new, :create, :edit, :update, :destroy]
+  end
 
   # ボランティア用
   devise_for :volunteers, controllers: {
     registrations: 'volunteer/registrations',
     sessions: 'volunteer/sessions'
   }
+
+  namespace :volunteer do
+    root to: "homes#top"
+    get 'homes/about', as: 'about'
+    resources :users, only: [:show]
+    resources :local_governments, only: [:index, :show]
+    resources :reserves, only: [:create, :index]
+      post "reserves/comfirm" => "reserves#confirm"
+      get  "reserves/thanks"  => "reserves#thanks"
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
