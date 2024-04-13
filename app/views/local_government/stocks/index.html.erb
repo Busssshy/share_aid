@@ -1,0 +1,8 @@
+<% if @stocks.any? %>
+<% else %>
+  <p><b>在庫品の登録がありません。</b></p>
+<% end %>
+
+
+
+<%= paginate @stocks %>
