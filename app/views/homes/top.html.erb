@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row text-center">
+    <div class="mx-auto col-11 my-5">
+      <h1><strong>SHARE AID</strong></h1>
+    </div>
+    <div class="col-12 mt-3">
+      <div class="row justify-content-center">
+        <div class="col-4 border border-secondary">
+          <h2 class="h5 m-3"><b>自治体</b>の方はこちら</h2>
+            <%= link_to "ログイン", new_local_government_session_path, class: "btn btn-info btn-block my-3" %>
+            <%= link_to "新規登録", new_local_government_registration_path, class: "btn btn-success btn-block mb-3" %>
+        </div>
+        <div class="col-4 offset-1 border border-secondary">
+          <h2 class="h5 m-3"><b>ボランティア</b>の方はこちら</h2>
+            <%= link_to "ログイン", new_volunteer_session_path, class: "btn btn-info btn-block my-3" %>
+            <%= link_to "新規登録", new_volunteer_registration_path, class: "btn btn-success btn-block mb-3" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
