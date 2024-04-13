@@ -11,31 +11,51 @@
     <div class="mx-auto">
       <%= render "volunteer/shared/error_messages", resource: resource %>
 
-      
-      
       <div class="field">
-        <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <%= f.text_field :name, :placeholder => "お名前", size: "40" %>
       </div>
 
-      <div class="field">
-        <%= f.label :password %>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %>
-        <%= f.password_field :password, autocomplete: "new-password" %>
+      <div class="field mt-2">
+        <%= f.email_field :email, :placeholder => "メールアドレス", size: "40" %>
       </div>
 
-      <div class="field">
-        <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <div class="field mt-2">
+        <%= f.password_field :password, autocomplete: "new-password", :placeholder => "パスワード", size: "40" %>
       </div>
 
-      <div class="actions">
-        <%= f.submit "登録" %>
+      <div class="field mt-2">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", :placeholder => "パスワード確認", size: "40" %>
       </div>
 
-      <%= render "volunteer/shared/links" %>
+      <div class="field mt-2">
+        <%= f.text_field :phone_number, :placeholder => "電話番号", size: "40" %>
+      </div>
+
+      <div class="field mt-2">
+        <%= f.text_field :post_code, :placeholder => "郵便番号", size: "40" %>
+      </div>
+
+      <div class="field mt-2">
+        <%= f.text_field :address, :placeholder => "住所", size: "40" %>
+      </div>
+
+      <div class="actions mt-4">
+        <div class="col">
+
+          <div class="row">
+            <div class="mx-auto">
+              <%= f.submit "登録" %>
+            </div>
+          </div>
+
+          <div class="row mt-2">
+            <div class="mx-auto">
+              <%= render "volunteer/shared/links" %>
+            </div>
+          </div>
+
+        </div>
+      </div>
 
     </div>
   </div>
