@@ -1,1 +1,10 @@
 @use '~bootstrap/scss/bootstrap';
+
+/*在庫一覧テキスト位置*/
+table.cell-right-align thead {
+  text-align: center;
+}
+
+td.cell-text-align {
+  text-align: right;
+}

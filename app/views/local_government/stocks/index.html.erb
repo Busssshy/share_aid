@@ -1,8 +1,54 @@
-<% if @stocks.any? %>
-<% else %>
-  <p><b>在庫品の登録がありません。</b></p>
-<% end %>
-
-
-
-<%= paginate @stocks %>
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h3><b>在庫一覧</b></h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+      <table class="table-text-align">
+        <thead>
+          <tr>
+            <th>品名</th>
+            <th>在庫数</th>
+            <th>一人当たりの必要数/日</th>
+            <th>欠品数</th>
+            <th>期限</th>
+            <th>残り日数</th>
+            <th>備考</th>
+            <th>作成日</th>
+            <th>更新日</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @stocks.any? %>
+            <% @stocks.each do |stock| %>
+              <tr>
+                <td><%= stock.name %></td>
+                <td class="cell-text-align"></td>
+                <td class="cell-text-align"></td>
+                <td class="cell-text-align"></td>
+                <td class="cell-text-align"><%= stock.deadline %></td>
+                <td></td>
+                <td><%= simple_format(stock.memo)%></td>
+                <td class="cell-text-align"></td>
+                <td class="cell-text-align"></td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td><p><b>在庫品の登録がありません。</b></p></td>
+            </tr>  
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-1"></div>
+  </div>
+  <div class="row">
+    <div class="col-12 text-center">
+      <%= paginate @stocks %>
+    </div>
+  </div>
+</div>
