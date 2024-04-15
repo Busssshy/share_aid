@@ -1,2 +1,40 @@
-<h1>LocalGovernment::Stocks#new</h1>
-<p>Find me in app/views/local_government/stocks/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h3><b>在庫登録</b></h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+      <%= form_with model: @stock, url: local_government_stocks_path, method: :post do |f| %>
+      <table class="table table-borderless">
+        <tr>
+          <th><%= f.label "品名" %></th>
+          <td><%= f.text_field :name, autofocus: true %></td>
+        </tr>
+        <tr>
+          <th><%= f.label "在庫数" %></th>
+          <td><%= f.text_field :amount %></td>
+        </tr>
+        <tr>
+          <th><%= f.label "一人当たりの必要数/日" %></th>
+          <td><%= f.text_field : , placeholder: "1日の一人当たりの必要数を入力してください" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label "使用期限" %></th>
+          <td><%= f.text_field :deadline %></td>
+        </tr>
+        <tr>
+          <th><%= f.label "備考" %></th>
+          <td><%= f.text_area :memo, rows: '3' %></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td><%= f.submit "登録" %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>
