@@ -8,9 +8,26 @@ class LocalGovernment::StocksController < ApplicationController
   def create
     @stock = Stock.new(stock_params)
     @stock.local_government_id = current_local_government.id
-    @stock.save
-    redirect_to local_government_stocks_path
-  end  
+    if @stock.save
+      flash[:notice] = "登録しました。"
+      redirect_to local_government_stocks_path
+    else
+      render "new"
+    end  
+  end
+  
+  
+  
+  
+  
+  def index
+    @stocks = Stock.all
+  end
+
+
+
+
+
 
   def edit
   end
