@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root to: 'homes#top'
-  
+
    # 自治体用
   devise_for :local_governments, controllers: {
     registrations: 'local_government/registrations',
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   namespace :volunteer do
     root to: "homes#top"
     get 'homes/about', as: 'about'
-    resources :users, only: [:show]
+    resources :users, only: [:show, :edit]
     resources :local_governments, only: [:index, :show]
     resources :reserves, only: [:create, :index]
       post "reserves/comfirm" => "reserves#confirm"
