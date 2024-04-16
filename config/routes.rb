@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root to: 'homes#top'
+  
    # 自治体用
   devise_for :local_governments, controllers: {
     registrations: 'local_government/registrations',
