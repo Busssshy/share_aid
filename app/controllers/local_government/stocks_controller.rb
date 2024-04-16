@@ -3,5 +3,11 @@ class LocalGovernment::StocksController < ApplicationController
   end
 
   def edit
+    @stock = Stock.find(params[:id])
+  end
+  
+  def update
+    if @stock.update(stock_params)
+      redirect_to 
   end
 end
