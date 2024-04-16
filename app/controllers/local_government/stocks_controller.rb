@@ -1,10 +1,10 @@
 class LocalGovernment::StocksController < ApplicationController
   before_action :authenticate_local_government!
-  
+
   def new
     @stock = Stock.new
   end
-  
+
   def create
     @stock = Stock.new(stock_params)
     @stock.local_government_id = current_local_government.id
@@ -13,13 +13,13 @@ class LocalGovernment::StocksController < ApplicationController
       redirect_to local_government_stocks_path
     else
       render "new"
-    end  
+    end
   end
-  
-  
-  
-  
-  
+
+
+
+
+
   def index
     @stocks = Stock.all
   end
@@ -31,17 +31,10 @@ class LocalGovernment::StocksController < ApplicationController
 
   def edit
   end
-  
+
   private
-  
-  
-  
-  
-  
-  
-  
-  # ↓↓↓追加したカラムを追加する
+
   def stock_params
-    params.require(:stock).permit(:name, :amount, :deadline, :memo)
-  end  
+    params.require(:stock).permit(:name, :amount, :one_daily_quantity, :deadline, :memo)
+  end
 end
