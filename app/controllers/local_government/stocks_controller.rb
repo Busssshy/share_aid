@@ -8,6 +8,6 @@ class LocalGovernment::StocksController < ApplicationController
   
   def update
     if @stock.update(stock_params)
-      redirect_to 
+      redirect_to
   end
 end
