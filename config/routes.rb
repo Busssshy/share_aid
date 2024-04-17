@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 
   namespace :local_government do
     root to: "stocks#index"
-    resources :genres, only: [:new, :create, :index, :destroy]
     resources :stocks, only: [:new, :create, :index, :edit, :update, :destroy]
   end
 
