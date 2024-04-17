@@ -1,5 +1,27 @@
-<h1>Volunteer::LocalGovernments#index</h1>
-<p>Find me in app/views/volunteer/local_governments/index.html.erb</p>
+<div class="container">
+  <%= link_to "ログアウト", destroy_volunteer_session_path, method: :delete %>
+  <div class="row my-5">
+    <div class="mx-auto">
+      <h1><strong>自治体選択</strong></h1>
+    </div>
+  </div>
+  <div class="row">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th class="text-center">自治体名</th>
+              <th colspan="1"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @local_governments.each do |local_government| %>
+            <tr>
+              <td class="text-center"><%= local_government.name %></td>
+              <td class="text-center"><%= link_to "提供数一覧", volunteer_local_government_path(local_government.id) %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
 
-自治体選択ページ
-<%= link_to "ログアウト", destroy_volunteer_session_path, method: :delete %>
+  </div>
+</div>
