@@ -16,19 +16,6 @@ class LocalGovernment::StocksController < ApplicationController
     end
   end
 
-
-
-
-
-  def index
-    @stocks = Stock.all
-  end
-
-
-
-
-
-
   def edit
   end
 
