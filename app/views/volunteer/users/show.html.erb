@@ -1,26 +1,26 @@
 <div class="container">
 
-  <div class="row">
+  <div class="row my-5">
     <div class="mx-auto">
-      マイページ
+      <h2>マイページ</h2>
     </div>
   </div>
 
   <div class="row">
     <div class="mx-auto">
 
-      <table>
+      <table class="table table_boeder">
         <tdody>
           <tr>
             <th>会員情報</th>
             <td>
-              <%= link_to "確認", edit_volunteer_user %>
+              <%= link_to "確認", edit_volunteer_user_path(current_volunteer) %>
             </td>
           </tr>
           <tr>
             <th>予約履歴一覧</th>
             <td>
-              <%#= link_to "確認", %>
+              <%= link_to "確認", volunteer_reserves_path %>
             </td>
           </tr>
         </tdody>

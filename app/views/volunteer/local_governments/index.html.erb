@@ -3,3 +3,4 @@
 
 自治体選択ページ
 <%= link_to "ログアウト", destroy_volunteer_session_path, method: :delete %>
+<%= link_to "マイページ", volunteer_user_path(current_volunteer) %>
