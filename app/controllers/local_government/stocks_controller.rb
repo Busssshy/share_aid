@@ -16,6 +16,9 @@ class LocalGovernment::StocksController < ApplicationController
     end
   end
 
+  def index
+  end
+
   def edit
   end
 

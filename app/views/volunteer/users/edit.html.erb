@@ -1,0 +1,72 @@
+<div class="container">
+
+<%= form_with model:@volunteer do |f| %>
+
+  <div class="row my-5">
+    <div class="mx-auto">
+      <h2>会員情報</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-5 text-right">
+      <%= f.label :name, "氏名" %>
+    </div>
+    <div class="col-7">
+      <%= f.text_field :name %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-5 text-right">
+      <%= f.label :email, "メールアドレス" %>
+    </div>
+    <div class="col-7">
+      <%= f.text_field :email %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-5 text-right">
+      <%= f.label :password, "パスワード" %>
+    </div>
+    <div class="col-7">
+      <%= f.text_field :password %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-5 text-right">
+      <%= f.label :phone_number, "電話番号" %>
+    </div>
+    <div class="col-7">
+      <%= f.text_field :phone_number %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-5 text-right">
+      <%= f.label :post_code, "郵便番号" %>
+    </div>
+    <div class="col-7">
+      <%= f.text_field :post_code %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-5 text-right">
+      <%= f.label :address %>
+    </div>
+    <div class="col-7">
+      <%= f.text_field :address %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-5 text-right"></div>
+    <div class="col-7">更新</div>
+  </div>
+
+  <% end %>
+
+</div>
