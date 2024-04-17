@@ -7,34 +7,54 @@
   <div class="row">
     <div class="col-1"></div>
     <div class="col-10 text-center">
-      <%= form_with model: @stock, url: local_government_stock_path, method: :patch do |f| %>
-        <table class="table table-borderless">
-          <tr>
-            <th><%= f.label "品名" %></th>
-            <td><%= f.text_field :name, autofocus: true, size:50 %></td>
-          </tr>
-          <tr>
-            <th><%= f.label "在庫数" %></th>
-            <td><%= f.text_field :amount, size: 50 %></td>
-          </tr>
-          <!--<tr>-->
-            <th><%#= f.label "一人当たりの必要数/日" %></th>
-            <td><%#= f.text_field : , placeholder: "1日の一人当たりの必要数を入力してください", size: 40 %></td>
-          <!--</tr>-->
-          <tr>
-            <th><%= f.label "使用期限" %></th>
-            <td><%= f.date_field :deadline, class: 'custom-date-field' %></td>
-          </tr>
-          <tr>
-            <th><%= f.label "備考" %></th>
-            <td><%= f.text_area :memo, size: "50x5" %></td>
-          </tr>
-          <tr>
-            <th></th>
-            <td><%= f.submit "更新" %><%= link_to "削除", local_government_stock_path(@stock), data: { confirm: "本当に削除しますか？" }, method: :delete %></td>
-          </tr>
-        </table>
-      <% end %>  
+      <%= form_with model: @stock, url: local_government_stock_path(@stock), method: :patch do |f| %>
+        <div class="row my-3">
+          <div class="col-12 col-md-4">
+            <b><%= f.label "品名" %></b>
+          </div>
+          <div class="col-12 col-md-8">
+            <%= f.text_field :name, autofocus: true, placeholder: "1~20文字以内", size:50 %>
+          </div>
+        </div>
+        <div class="row my-3">
+          <div class="col-12 col-md-4">
+            <b><%= f.label "在庫数" %></b>
+          </div>
+          <div class="col-12 col-md-8">
+            <%= f.text_field :amount, size: 50 %>
+          </div>
+        </div>
+        <div class="row my-3">
+          <div class="col-12 col-md-4">
+            <b><%= f.label "一人当たりの必要数/日" %></b>
+          </div>
+          <div class="col-12 col-md-8">
+            <%= f.text_field :one_daily_quantity, placeholder: "1日の一人当たりの必要数を入力してください", size: 50 %>
+          </div>
+        </div>
+        <div class="row my-3">
+          <div class="col-12 col-md-4">
+            <b><%= f.label "使用期限" %></b>
+          </div>
+          <div class="col-12 col-md-8">
+            <%= f.date_field :deadline, class: 'custom-date-field' %>
+          </div>
+        </div>
+        <div class="row my-3">
+          <div class="col-12 col-md-4 my-md-5">
+            <b><%= f.label "備考" %></b>
+          </div>
+          <div class="col-12 col-md-8">
+            <%= f.text_area :memo, placeholder: "200文字以内", size: "50x5" %>
+          </div>
+        </div>
+        <div class="row my-3">
+          <div class="col-12">
+            <%= f.submit "更新", class: "btn btn-outline-success custom-btn-size" %>
+            <%= link_to "削除", local_government_stock_path(@stock), class: "btn btn-outline-danger custom-btn-size", data: { confirm: "本当に削除しますか？" }, method: :delete %>
+          </div>
+        </div>
+      <% end %>
     </div>
     <div class="col-1"></div>
   </div>
