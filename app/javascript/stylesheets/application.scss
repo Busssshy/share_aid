@@ -1,1 +1,11 @@
 @use '~bootstrap/scss/bootstrap';
+
+/*在庫登録画面の使用期限入力フォームサイズ*/
+.custom-date-field {
+  width: 440px;
+}
+
+/*在庫登録画面の登録ボタンサイズ*/
+.custom-btn-size {
+  width: 150px;
+}

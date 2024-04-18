@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   namespace :local_government do
     root to: "stocks#index"
-    resources :stocks, only: [:new, :create, :edit, :update, :destroy]
+    resources :stocks, only: [:new, :create, :index, :edit, :update, :destroy]
   end
 
   # ボランティア用
