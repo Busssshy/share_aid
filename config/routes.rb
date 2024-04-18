@@ -9,8 +9,7 @@ Rails.application.routes.draw do
   }
 
   namespace :local_government do
-    root to: "homes#top"
-    resources :genres, only: [:new, :create, :index, :destroy]
+    root to: "stocks#index"
     resources :stocks, only: [:new, :create, :edit, :update, :destroy]
   end
 
