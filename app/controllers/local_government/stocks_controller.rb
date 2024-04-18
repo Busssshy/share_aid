@@ -15,6 +15,9 @@ class LocalGovernment::StocksController < ApplicationController
       render "new"
     end
   end
+  
+  def index
+  end
 
   def edit
     @stock = Stock.find(params[:id])
