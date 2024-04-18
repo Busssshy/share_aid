@@ -6,7 +6,8 @@
   </div>
   <div class="row my-5">
 　  <div class="mx-auto">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= form_with model: @local_government, url: session_path(resource_name) do |f| %>
+
       <div class="field mt-4">
         <%= f.text_field :name, :placeholder => "自治体名", size: "40" %>
       </div>
@@ -22,10 +23,11 @@
         </div>
     </div>
   </div>
+  <% end %>
+
   <div class="row my-4">
     <div class="mx-auto">
       <%= render "local_government/shared/links" %>
     </div>
    </div>
 </div>
-<% end %>
