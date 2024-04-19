@@ -12,14 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2024_04_16_150117) do
 
-  create_table "genres", force: :cascade do |t|
-    t.integer "stock_id", null: false
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["stock_id"], name: "index_genres_on_stock_id"
-  end
-
   create_table "local_gov_stock_relations", force: :cascade do |t|
     t.integer "stock_id", null: false
     t.integer "local_government_id", null: false
@@ -82,14 +74,13 @@ ActiveRecord::Schema.define(version: 2024_04_16_150117) do
 
   create_table "stocks", force: :cascade do |t|
     t.integer "local_government_id", null: false
-    t.integer "genre_id", null: false
     t.string "name"
     t.date "deadline"
+    t.integer "one_daily_quantity"
     t.integer "amount"
     t.text "memo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["genre_id"], name: "index_stocks_on_genre_id"
     t.index ["local_government_id"], name: "index_stocks_on_local_government_id"
   end
 
@@ -109,7 +100,6 @@ ActiveRecord::Schema.define(version: 2024_04_16_150117) do
     t.index ["reset_password_token"], name: "index_volunteers_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "genres", "stocks"
   add_foreign_key "local_gov_stock_relations", "local_governments"
   add_foreign_key "local_gov_stock_relations", "stocks"
   add_foreign_key "notifications", "local_governments"
@@ -118,6 +108,5 @@ ActiveRecord::Schema.define(version: 2024_04_16_150117) do
   add_foreign_key "reservation_details", "reservations"
   add_foreign_key "reservation_details", "stocks"
   add_foreign_key "reservations", "volunteers"
-  add_foreign_key "stocks", "genres"
   add_foreign_key "stocks", "local_governments"
 end
