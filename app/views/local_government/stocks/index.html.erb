@@ -1,4 +1,4 @@
-<%= link_to "ログアウト", destroy_local_government_session_path, method: :delete %>
+<div class="text-center"><%= link_to "ログアウト", destroy_local_government_session_path, method: :delete %></div>
 
 <div class="container">
   <div class="row">
@@ -7,9 +7,13 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-1"></div>
-    <div class="col-10">
-      <table class="table border table-text-align">
+    <div class="col-12 text-center">
+      <%= link_to "新規在庫登録", new_local_government_stock_path, class: "btn btn-outline-warning my-3" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered table-striped">
         <thead>
           <tr>
             <th>品名</th>
@@ -33,10 +37,22 @@
                 <td class="cell-text-align"><%= stock.one_daily_quantity %></td>
                 <td class="cell-text-align"></td>
                 <td class="cell-text-align"><%= stock.deadline %></td>
-                <td></td>
+                <td>
+                  <% if stock.deadline - Date.today > 0 %>
+                    <span>あと&nbsp;<%= (stock.deadline - Date.today).to_i %>&nbsp;日</span>
+                    
+                　<% elsif stock.deadline - Date.today < 5 %>
+                    <span class="text-success">期限が迫っています(あと&nbsp;<%= (stock.deadline - Date.today).to_i %>&nbsp;日)</span>
+                    
+                  <% elsif stock.deadline - Date.today == 0 %>
+                    <span class="text-warning">今日までです</span>
+                  <% else %>
+                    <span class="text-danger">期限が過ぎています</span>
+                  <% end %>
+                </td>
                 <td><%= simple_format(stock.memo) %></td>
-                <td class="cell-text-align"></td>
-                <td class="cell-text-align"></td>
+                <td class="cell-text-align"><%= stock.created_at.strftime("%Y年%m月%d日").to_s %></td>
+                <td class="cell-text-align"><%= stock.updated_at.strftime("%Y年%m月%d日").to_s %></td>
                 <td><%= link_to "編集", edit_local_government_stock_path(stock) %></td>
               </tr>
             <% end %>
@@ -48,7 +64,6 @@
         </tbody>
       </table>
     </div>
-    <div class="col-1"></div>
   </div>
   <div class="row">
     <div class="col-12 text-center">

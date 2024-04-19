@@ -10,6 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 2024_04_08_070822) do
+
   create_table "local_governments", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -65,6 +67,7 @@
     t.integer "local_government_id", null: false
     t.string "name"
     t.date "deadline"
+    t.integer "one_daily_quantity"
     t.integer "amount"
     t.text "memo"
     t.datetime "created_at", precision: 6, null: false
