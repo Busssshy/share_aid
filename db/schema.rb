@@ -10,8 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_04_08_070822) do
-
   create_table "local_governments", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -65,13 +63,14 @@ ActiveRecord::Schema.define(version: 2024_04_08_070822) do
 
   create_table "stocks", force: :cascade do |t|
     t.integer "local_government_id", null: false
+    t.integer "genre_id", null: false
     t.string "name"
     t.date "deadline"
-    t.integer "one_daily_quantity"
     t.integer "amount"
     t.text "memo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["genre_id"], name: "index_stocks_on_genre_id"
     t.index ["local_government_id"], name: "index_stocks_on_local_government_id"
   end
 
@@ -97,5 +96,6 @@ ActiveRecord::Schema.define(version: 2024_04_08_070822) do
   add_foreign_key "reservation_details", "reservations"
   add_foreign_key "reservation_details", "stocks"
   add_foreign_key "reservations", "volunteers"
+  add_foreign_key "stocks", "genres"
   add_foreign_key "stocks", "local_governments"
 end
