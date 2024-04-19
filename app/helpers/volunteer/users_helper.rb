@@ -1,2 +1,0 @@
-module Volunteer::UsersHelper
-end

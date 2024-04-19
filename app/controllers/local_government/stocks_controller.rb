@@ -20,6 +20,9 @@ class LocalGovernment::StocksController < ApplicationController
     @stocks = Stock.page(params[:page]).per(10)
   end
 
+  def index
+  end
+
   def edit
     @stock = Stock.find(params[:id])
     unless current_local_government == @stock.local_government

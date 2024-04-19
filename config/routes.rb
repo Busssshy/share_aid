@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   namespace :volunteer do
     root to: "homes#top"
     get 'homes/about', as: 'about'
-    resources :users, only: [:show]
+    resources :volunteers, only: [:show, :edit, :update]
     resources :local_governments, only: [:index, :show]
     resources :reserves, only: [:create, :index]
       post "reserves/comfirm" => "reserves#confirm"
