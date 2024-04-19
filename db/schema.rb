@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2024_04_08_070822) do
   end
 
   create_table "stocks", force: :cascade do |t|
+    t.integer "local_government_id", null: false
     t.string "name"
     t.date "deadline"
     t.integer "one_daily_quantity"
@@ -71,6 +72,7 @@ ActiveRecord::Schema.define(version: 2024_04_08_070822) do
     t.text "memo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["local_government_id"], name: "index_stocks_on_local_government_id"
   end
 
   create_table "volunteers", force: :cascade do |t|
@@ -95,4 +97,5 @@ ActiveRecord::Schema.define(version: 2024_04_08_070822) do
   add_foreign_key "reservation_details", "reservations"
   add_foreign_key "reservation_details", "stocks"
   add_foreign_key "reservations", "volunteers"
+  add_foreign_key "stocks", "local_governments"
 end

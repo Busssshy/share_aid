@@ -4,8 +4,6 @@ class LocalGovernment < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  has_many :local_gov_stock_relations, dependent: :destroy
-  has_many :stocks, through: :local_gov_stock_relations
   has_many :notifications, dependent: :destroy
   has_many :stocks, dependent: :destroy
 
