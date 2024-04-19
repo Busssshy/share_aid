@@ -7,6 +7,7 @@ class LocalGovernment < ApplicationRecord
   has_many :local_gov_stock_relations, dependent: :destroy
   has_many :stocks, through: :local_gov_stock_relations
   has_many :notifications, dependent: :destroy
+  has_many :stocks, dependent: :destroy
 
   validates :name, presence: true
   validates :email, presence: true
