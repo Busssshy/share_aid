@@ -7,15 +7,15 @@ class LocalGovernment::StocksController < ApplicationController
 
   def create
     @stock = Stock.new(stock_params)
-    @stock.local_government_id = current_local_government.id
     if @stock.save
+      current_local_government.stock << @stock
       flash[:notice] = "登録しました。"
       redirect_to local_government_stocks_path
     else
       render "new"
     end
   end
-
+  
   def index
     @stocks = Stock.page(params[:page]).per(10)
   end
@@ -26,6 +26,6 @@ class LocalGovernment::StocksController < ApplicationController
   private
 
   def stock_params
-    params.require(:stock).permit(:name, :amount, :one_daily_quantity, :deadline, :memo)
+    params.require(:local_government).permit(:name, :amount, :one_daily_quantity, :deadline, :memo)
   end
 end
