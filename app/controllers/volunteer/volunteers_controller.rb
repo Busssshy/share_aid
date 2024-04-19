@@ -1,4 +1,4 @@
-class Volunteer::UsersController < ApplicationController
+class Volunteer::VolunteersController < ApplicationController
   before_action :set_volunteer
 
   def show
@@ -9,8 +9,10 @@ class Volunteer::UsersController < ApplicationController
 
   def update
     if @volunteer.update(volunteer_params)
-      redirect_to request.referer, notice: "アカウント情報が更新されました"
+      flash[:notice] = "アカウント情報が更新されました"
+      redirect_to request.referer
     else
+      flash[:notice] = "情報の更新に失敗しました。"
       render "edit"
     end
   end
@@ -24,4 +26,5 @@ private
   def set_volunteer
     @volunteer = Volunteer.find(params[:id])
   end
+
 end

@@ -1,6 +1,6 @@
 <div class="container">
 
-<%= form_with model:@volunteer do |f| %>
+<%= form_with model: @volunteer, url: volunteer_volunteer_path(@volunteer), method: :patch do |f| %>
 
   <div class="row my-5">
     <div class="mx-auto">
