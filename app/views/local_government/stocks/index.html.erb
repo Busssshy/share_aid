@@ -33,19 +33,24 @@
             <% @stocks.each do |stock| %>
               <tr>
                 <td><%= stock.name %></td>
-                <td class="cell-text-align"></td>
+                
+                
+                <!--↓↓↓暫定です↓↓↓-->
+                <td class="cell-text-align"><%= stock.amount %><%#= stock.amount + ReservationDetails.amount %></td>
+                
+                
                 <td class="cell-text-align"><%= stock.one_daily_quantity %></td>
-                <td class="cell-text-align"></td>
+                <td class="cell-text-align"><%= stock.local_government_id.population * stock.one_daily_quantity - stock.amount %></td>
                 <td class="cell-text-align"><%= stock.deadline %></td>
                 <td>
-                  <% if stock.deadline - Date.today > 0 %>
+                  <% if stock.deadline - Date.today > 5 %>
                     <span>あと&nbsp;<%= (stock.deadline - Date.today).to_i %>&nbsp;日</span>
-                    
-                　<% elsif stock.deadline - Date.today < 5 %>
-                    <span class="text-success">期限が迫っています(あと&nbsp;<%= (stock.deadline - Date.today).to_i %>&nbsp;日)</span>
-                    
-                  <% elsif stock.deadline - Date.today == 0 %>
-                    <span class="text-warning">今日までです</span>
+                  <% elsif (0..5).include?(stock.deadline - Date.today) %>
+                    <% if stock.deadline - Date.today == 0 %>
+                      <span class="text-warning">今日までです</span>
+                    <% else %>
+                      <span class="text-success">期限が迫っています(あと&nbsp;<%= (stock.deadline - Date.today).to_i %>&nbsp;日)</span>
+                    <% end %>
                   <% else %>
                     <span class="text-danger">期限が過ぎています</span>
                   <% end %>
@@ -59,7 +64,7 @@
           <% else %>
             <tr>
               <td><p><b>在庫品の登録がありません。</b></p></td>
-            </tr>  
+            </tr>
           <% end %>
         </tbody>
       </table>

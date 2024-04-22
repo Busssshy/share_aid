@@ -18,6 +18,14 @@ class LocalGovernment::StocksController < ApplicationController
   
   def index
     @stocks = Stock.page(params[:page]).per(10)
+    
+    # 後々追加します
+    # if params[:old]
+    #   @stocks = Stock.old
+    # elsif params[:deadline]
+    #   @stocks = Stock.deadline
+    # else
+    #   @stocks = Stock.latest
   end
 
   def edit
