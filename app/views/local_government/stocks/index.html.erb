@@ -45,7 +45,7 @@
                 
                 
                 <td class="cell-text-align"><%= stock.one_daily_quantity %></td>
-                <td class="cell-text-align"><%#= stock.local_government_id.population * stock.one_daily_quantity - stock.amount %></td>
+                <td class="cell-text-align"><%= stock.local_government.population * stock.one_daily_quantity - stock.amount %></td>
                 <td class="cell-text-align"><%= stock.deadline %></td>
                 <td>
                   <% if stock.deadline - Date.today > 5 %>
