@@ -7,7 +7,12 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-12 text-center">
+    <div class="col-4">
+      <%= link_to '新しい登録順', local_government_stocks_path(latest: "true") %>
+      |<%= link_to '古い登録順', local_government_stocks_path(old: "true") %>
+      |<%= link_to '期限が近い順', local_government_stocks_path(deadline: "true") %>
+    </div>
+    <div class="col-8 text-center">
       <%= link_to "新規在庫登録", new_local_government_stock_path, class: "btn btn-outline-warning my-3" %>
     </div>
   </div>
@@ -40,7 +45,7 @@
                 
                 
                 <td class="cell-text-align"><%= stock.one_daily_quantity %></td>
-                <td class="cell-text-align"><%= stock.local_government_id.population * stock.one_daily_quantity - stock.amount %></td>
+                <td class="cell-text-align"><%#= stock.local_government_id.population * stock.one_daily_quantity - stock.amount %></td>
                 <td class="cell-text-align"><%= stock.deadline %></td>
                 <td>
                   <% if stock.deadline - Date.today > 5 %>

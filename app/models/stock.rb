@@ -14,5 +14,5 @@ class Stock < ApplicationRecord
   
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
-  scope :deadline, -> {order(deadline: :desc, created_at: :desc)}
+  scope :deadline, -> {order(deadline: :asc, created_at: :desc)}
 end

@@ -17,15 +17,14 @@ class LocalGovernment::StocksController < ApplicationController
   end
   
   def index
+    if params[:old]
+      @stocks = Stock.old
+    elsif params[:deadline]
+      @stocks = Stock.deadline
+    else
+      @stocks = Stock.latest
+    end
     @stocks = Stock.page(params[:page]).per(10)
-    
-    # 後々追加します
-    # if params[:old]
-    #   @stocks = Stock.old
-    # elsif params[:deadline]
-    #   @stocks = Stock.deadline
-    # else
-    #   @stocks = Stock.latest
   end
 
   def edit
