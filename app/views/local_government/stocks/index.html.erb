@@ -1,2 +1,83 @@
-<h1>LocalGovernment::stocks#index</h1>
-<%= link_to "ログアウト", destroy_local_government_session_path, method: :delete %>
+<div class="text-center"><%= link_to "ログアウト", destroy_local_government_session_path, method: :delete %></div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h3><b>在庫一覧</b></h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4 d-flex align-items-center">
+      <%= link_to '新しい登録順', local_government_stocks_path(latest: "true") %>
+      |<%= link_to '古い登録順', local_government_stocks_path(old: "true") %>
+      |<%= link_to '期限が近い順', local_government_stocks_path(deadline: "true") %>
+    </div>
+    <div class="col-8 text-center">
+      <%= link_to "新規在庫登録", new_local_government_stock_path, class: "btn btn-outline-warning my-3" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>品名</th>
+            <th>在庫数</th>
+            <th>一人当たりの必要数/日</th>
+            <th>欠品数</th>
+            <th>期限</th>
+            <th>残り日数</th>
+            <th>備考</th>
+            <th>作成日</th>
+            <th>更新日</th>
+            <th>編集</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @stocks.any? %>
+            <% @stocks.each do |stock| %>
+              <tr>
+                <td><%= stock.name %></td>
+                
+                
+                <!--↓↓↓暫定です↓↓↓-->
+                <td class="cell-text-align"><%= stock.amount %><%#= stock.amount + ReservationDetails.amount %></td>
+                
+                
+                <td class="cell-text-align"><%= stock.one_daily_quantity %></td>
+                <td class="cell-text-align"><%= stock.local_government.population * stock.one_daily_quantity - stock.amount %></td>
+                <td class="cell-text-align"><%= stock.deadline.strftime("%Y年%m月%d日") %></td>
+                <td>
+                  <% if stock.deadline - Date.today > 5 %>
+                    <span>あと&nbsp;<%= (stock.deadline - Date.today).to_i %>&nbsp;日</span>
+                  <% elsif (0..5).include?(stock.deadline - Date.today) %>
+                    <% if stock.deadline - Date.today == 0 %>
+                      <span class="text-warning">今日までです</span>
+                    <% else %>
+                      <span class="text-success">期限が迫っています(あと&nbsp;<%= (stock.deadline - Date.today).to_i %>&nbsp;日)</span>
+                    <% end %>
+                  <% else %>
+                    <span class="text-danger">期限が過ぎています</span>
+                  <% end %>
+                </td>
+                <td><%= simple_format(stock.memo) %></td>
+                <td class="cell-text-align"><%= stock.created_at.strftime("%Y年%m月%d日") %></td>
+                <td class="cell-text-align"><%= stock.updated_at.strftime("%Y年%m月%d日") %></td>
+                <td><%= link_to "編集", edit_local_government_stock_path(stock) %></td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr>
+              <td><p><b>在庫品の登録がありません。</b></p></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 text-center">
+      <%= paginate @stocks %>
+    </div>
+  </div>
+</div>
