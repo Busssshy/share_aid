@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2024_04_08_070822) do
     t.datetime "remember_created_at"
     t.string "name"
     t.string "phone_number"
+    t.integer "population"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_local_governments_on_email", unique: true

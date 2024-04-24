@@ -5,13 +5,34 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <script src="https://kit.fontawesome.com/e9592687ff.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <% if local_government_signed_in? %>
+        <!--自治体ログイン時ヘッダー-->
+        <%= render 'layouts/local_government_header' %>
+      <% elsif volunteer_signed_in? %>
+        <!--ボランティアログイン時ヘッダー-->
+        <%= render 'layouts/volunteer_header' %>
+      <% else %>
+        <!--ログイン前ヘッダー-->
+    <% end %>
+    <main>
+      <% if flash[:notice] %>
+        <div class="alert alert-success">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+      <% if flash[:alert] %>
+        <div class="alert alert-danger">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+        <%= yield %>
+    </main>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
