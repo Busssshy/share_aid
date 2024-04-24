@@ -10,7 +10,7 @@ class LocalGovernment::RegistrationsController < Devise::RegistrationsController
   protected
 
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:email,:phone_number])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name,:email,:phone_number, :population])
   end
 
 end

@@ -11,4 +11,5 @@ class LocalGovernment < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true
+  validates :population, presence: true, length: { minimum: 1 }
 end

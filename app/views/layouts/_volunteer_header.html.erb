@@ -1,0 +1,26 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    <div class="container">
+      <h1 class="text-white"><strong>SHARE AID</strong></h1>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mr-3">
+            <%= link_to "#{current_volunteer.name}さんのマイページ",volunteer_volunteer_path(current_volunteer),class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item mr-3">
+            <%= link_to "自治体選択",volunteer_local_governments_path,class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item mr-3">
+            <%= link_to "ABOUT",volunteer_about_path ,class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item mr-3">
+            <%= link_to "ログアウト",destroy_volunteer_session_path, method: :delete,class: 'nav-link text-light' %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
