@@ -11,7 +11,7 @@ class Stock < ApplicationRecord
   validates :one_daily_quantity, presence: true
   validates :deadline, presence: true
   validates :memo, length: { maximum: 200 }
-  
+
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
   scope :deadline, -> {order(deadline: :asc, created_at: :desc)}

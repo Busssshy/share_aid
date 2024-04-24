@@ -15,7 +15,7 @@ class LocalGovernment::StocksController < ApplicationController
       render "new"
     end
   end
-  
+
   def index
     if params[:old]
       @stocks = Stock.old.page(params[:page]).per(10)
@@ -32,9 +32,9 @@ class LocalGovernment::StocksController < ApplicationController
       flash[:alert] = "他自治体の在庫情報は編集出来ません。"
       redirect_back(fallback_location: local_government_stocks_path)
       return
-    end 
+    end
   end
-  
+
   def update
     @stock = Stock.find(params[:id])
     if @stock.update(stock_params)
@@ -42,9 +42,9 @@ class LocalGovernment::StocksController < ApplicationController
       redirect_to local_government_stocks_path
     else
       render :edit
-    end  
+    end
   end
-  
+
   def destroy
     stock = Stock.find(params[:id])
     if stock.destroy
@@ -52,8 +52,8 @@ class LocalGovernment::StocksController < ApplicationController
       redirect_to local_government_stocks_path
     else
       render :edit
-    end  
-  end  
+    end
+  end
 
   private
 

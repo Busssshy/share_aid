@@ -1,4 +1,5 @@
 class Volunteer::VolunteersController < ApplicationController
+  before_action :authenticate_volunteer!
   before_action :set_volunteer
 
   def show
