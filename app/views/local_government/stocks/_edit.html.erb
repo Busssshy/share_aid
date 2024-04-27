@@ -7,7 +7,7 @@
   <div class="row">
     <div class="col-1"></div>
     <div class="col-10 text-center">
-      <%= form_with model: @stock, url: local_government_stock_path(@stock), method: :patch do |f| %>
+      <%= form_with model: stock, url: local_government_stock_path(stock), method: :patch do |f| %>
         <div class="row my-3">
           <div class="col-12 col-md-4">
             <b><%= f.label "品名" %></b>
@@ -51,7 +51,7 @@
         <div class="row my-3">
           <div class="col-12">
             <%= f.submit "更新", class: "btn btn-outline-success custom-btn-size" %>
-            <%= link_to "削除", local_government_stock_path(@stock), class: "btn btn-outline-danger custom-btn-size", data: { confirm: "本当に削除しますか？" }, method: :delete %>
+            <%= link_to "削除", local_government_stock_path(stock), class: "btn btn-outline-danger custom-btn-size", data: { confirm: "本当に削除しますか？" }, method: :delete %>
           </div>
         </div>
       <% end %>

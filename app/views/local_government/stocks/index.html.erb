@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-12 text-center">
+    <div class="col-12">
       <%= link_to '新しい登録順', local_government_stocks_path(latest: "true") %>
       |<%= link_to '古い登録順', local_government_stocks_path(old: "true") %>
       |<%= link_to '期限が近い順', local_government_stocks_path(deadline: "true") %>
@@ -58,7 +58,7 @@
                 <td><%= simple_format(stock.memo) %></td>
                 <td class="cell-text-align"><%= stock.created_at.strftime("%Y年%m月%d日") %></td>
                 <td class="cell-text-align"><%= stock.updated_at.strftime("%Y年%m月%d日") %></td>
-                <td><%= link_to "編集", edit_local_government_stock_path(stock) %></td>
+                <td><%= link_to "編集", edit_local_government_stock_path(stock), remote: true %></td>
               </tr>
             <% end %>
           <% else %>
@@ -76,3 +76,7 @@
     </div>
   </div>
 </div>
+
+<div id="mask" class="hidden"></div>
+<div id="modal" class="hidden"></div>
+
