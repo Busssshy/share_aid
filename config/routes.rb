@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resources :volunteers, only: [:show, :edit, :update]
     resources :local_governments, only: [:index, :show]
     resources :reservation_confirmations, only: [:create]
-    resources :reservations, only: [:index, :create, :update, :destroy]
+    resources :reservations, only: [:create, :index ]
       post "reservations/confirm" => "reservations#confirm"
       get "reservations/thanks" => "reservations#thanks"
   end

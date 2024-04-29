@@ -1,0 +1,49 @@
+<div class="container">
+
+  <div class="row my-3">
+    <div class="mx-auto">
+      <h3>予約確認</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="mx-auto">
+      下記の内容で間違い無いですか？</br>
+      問題なければ確定ボタンをクリックしてください。
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="mx-auto">
+      <table>
+        <thead>
+          <tr>
+            <th>物資名</th>
+            <th>提供数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @reservation_items.each do |item| %>
+            <tr>
+              <td><%= item.name %></td>
+              <td><%= item.amount %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+   <div class="col-6 pull-right">
+     <!--ID取得の記述必要かも？-->
+     <%= link_to "戻る", volunteer_local_government_path %>
+   </div>
+   <div class="col-6">
+     <%= form_with url: volunteer_reservations_path, method: :post do %>
+       <%= submit_tag "確定" %>
+     <% end %>
+   </div>
+  </div>
+
+</div>
