@@ -3,7 +3,10 @@ class Volunteer::LocalGovernmentsController < ApplicationController
     @local_governments = LocalGovernment.all
   end
 
+
   def show
     @local_government = LocalGovernment.find(params[:id])
+    @stocks = @local_government.stocks
+
   end
 end
