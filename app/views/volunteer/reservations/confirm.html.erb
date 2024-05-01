@@ -29,6 +29,7 @@
               <td><%= item.amount %></td>
             </tr>
           <% end %>
+          <%= @reservation_items.inspect %>
         </tbody>
       </table>
     </div>
@@ -36,7 +37,7 @@
 
   <div class="row">
    <div class="col-6 pull-right">
-     <!--ID取得の記述必要かも？-->
+     ID取得の記述必要かも？
      <%= link_to "戻る", volunteer_local_government_path %>
    </div>
    <div class="col-6">

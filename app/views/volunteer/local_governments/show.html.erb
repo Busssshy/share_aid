@@ -6,7 +6,7 @@
   </div>
   <div class="row justify-content-center">
     <div class="col-auto">
-      <%= form_with url: volunteer_reserves_comfirm_path, method: :post, local: true do |f| %>
+      <%= form_with model: @reservation_item, url: volunteer_reservations_path, method: :post, local: true do |f| %>
         <table class="table table-striped">
           <thead>
             <tr>

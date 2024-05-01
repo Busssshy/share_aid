@@ -6,13 +6,13 @@ class Volunteer::ReservationsController < ApplicationController
   end
 
   def create
-    reservation = Reservation.new
-    reservation.volunteer_id = current_volunteer.id
-    reservation_items = ReservationConfirmation.where(volunteer_id: current_volunteer.id)
-
-    if reservation.save
+    # reservation = Reservation.new
+    reservation_item = current_volunteer.reservations.build(reservation_params)
+    reservation_item.volunteer_id = current_volunteer.id
+    reservation_items = Reservation.where(volunteer_id: current_volunteer.id)
+    if reservation_item.save
       reservation_items.each do |item|
-        ReservationDetail.create!(reservation_id: reservation.id, stock_id: reservation_confirmation.stock.id, amount: reservation_confirmation.amount)
+        ReservationDetail.create!(reservation_id: reservation_item.id, stock_id: reservation_item.stock.id, amount: reservation_item.amount)
       end
       reservation_items.destroy_all
       redirect_to volunteer_reservations_thanks_path
@@ -22,12 +22,18 @@ class Volunteer::ReservationsController < ApplicationController
   end
 
   def thanks
-    @reservation = Reservation.find(params[:id])
-    @reservation_details = @reservation.reservation_details
+    # @reservation = Reservation.find(params[:id])
+    # @reservation_details = @reservation.reservation_details
   end
 
   def index
     @reservations = current_volunteer.reservations.all
+  end
+
+  private
+
+  def reservation_params
+    params.require(:reservation).permit(:volunteer_id, :stock_id, :amount)
   end
 
 end
