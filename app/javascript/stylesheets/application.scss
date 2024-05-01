@@ -19,6 +19,10 @@ td.cell-text-align {
   text-align: right;
 }
 
+.title {
+  font-size: 4rem;
+}
+
 /*自治体ヘッダーのカラー*/
 .local_government_color {
   background-color: #83E1CA;
@@ -29,6 +33,7 @@ td.cell-text-align {
   background-color: #FFB84D;
 }
 
+/*フッター*/
 footer {
   margin-top: auto;
   height: 3rem;
