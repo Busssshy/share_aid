@@ -18,3 +18,24 @@ table.cell-right-align thead {
 td.cell-text-align {
   text-align: right;
 }
+
+/*自治体ヘッダーのカラー*/
+.local_government_color {
+  background-color: #83E1CA;
+}
+
+/*ボランティアヘッダーのカラー*/
+.volunteer_color {
+  background-color: #FFB84D;
+}
+
+footer {
+  margin-top: auto;
+  height: 3rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 95vh;
+}

@@ -11,28 +11,30 @@
   </head>
 
   <body>
-    <% if local_government_signed_in? %>
-        <!--自治体ログイン時ヘッダー-->
-        <%= render 'layouts/local_government_header' %>
-      <% elsif volunteer_signed_in? %>
-        <!--ボランティアログイン時ヘッダー-->
-        <%= render 'layouts/volunteer_header' %>
-      <% else %>
-        <!--ログイン前ヘッダー-->
-    <% end %>
-    <main>
-      <% if flash[:notice] %>
-        <div class="alert alert-success">
-          <%= flash[:notice] %>
-        </div>
+    <div class="wrapper">
+      <% if local_government_signed_in? %>
+          <!--自治体ログイン時ヘッダー-->
+          <%= render 'layouts/local_government_header' %>
+        <% elsif volunteer_signed_in? %>
+          <!--ボランティアログイン時ヘッダー-->
+          <%= render 'layouts/volunteer_header' %>
+        <% else %>
+          <!--ログイン前ヘッダー-->
       <% end %>
-      <% if flash[:alert] %>
-        <div class="alert alert-danger">
-          <%= flash[:alert] %>
-        </div>
-      <% end %>
-        <%= yield %>
-    </main>
-    <%= render 'layouts/footer' %>
+      <main>
+        <% if flash[:notice] %>
+          <div class="alert alert-success">
+            <%= flash[:notice] %>
+          </div>
+        <% end %>
+        <% if flash[:alert] %>
+          <div class="alert alert-danger">
+            <%= flash[:alert] %>
+          </div>
+        <% end %>
+          <%= yield %>
+      </main>
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>
