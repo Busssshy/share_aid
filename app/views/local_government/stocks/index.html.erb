@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12 text-center">
-      <h3><b>在庫一覧</b></h3>
+      <h3 class="my-3"><b>在庫一覧</b></h3>
     </div>
   </div>
   <div class="row">
@@ -33,12 +33,12 @@
             <% @stocks.each do |stock| %>
               <tr>
                 <td><%= stock.name %></td>
-                
-                
+
+
                 <!--↓↓↓暫定です↓↓↓-->
                 <td class="cell-text-align"><%= stock.amount %><%#= stock.amount + ReservationDetails.amount %></td>
-                
-                
+
+
                 <td class="cell-text-align"><%= stock.one_daily_quantity %></td>
                 <td class="cell-text-align"><%= stock.local_government.population * stock.one_daily_quantity - stock.amount %></td>
                 <td class="cell-text-align"><%= stock.deadline.strftime("%Y年%m月%d日") %></td>

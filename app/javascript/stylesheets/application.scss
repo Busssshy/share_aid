@@ -23,14 +23,23 @@ td.cell-text-align {
   font-size: 4rem;
 }
 
-/*自治体ヘッダーのカラー*/
+/*自治体のカラー*/
 .local_government_color {
   background-color: #83E1CA;
 }
 
-/*ボランティアヘッダーのカラー*/
+/*ボランティアのカラー*/
 .volunteer_color {
   background-color: #FFB84D;
+}
+
+.btn-volunteer {
+  background-color: #FFB84D;
+}
+
+.btn-volunteer:hover {
+  background-color: #FF8C00;
+  border-color: #FF8C00;
 }
 
 /*フッター*/
