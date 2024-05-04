@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row my-5">
+    <div class="mx-auto">
+      <h3>援助確定</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="mx-auto">
+      助けていただき、ありがとうございます。<br>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="mx-auto">
+      心から感謝いたします。
+    </div>
+  </div>
+
+  <div class="row my-5">
+    <div class="mx-auto">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>物資名</th>
+            <th>提供数</th>
+            <th>援助予約日</th>
+          </tr>
+        </thead>
+        <% @reservation_details.each do |reservation| %>
+        <tbody>
+          <tr>
+            <td><%= reservation.stock.name %></td>
+            <td><%= reservation.amount %></td>
+            <td><%= reservation.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
