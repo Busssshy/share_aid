@@ -1,26 +1,25 @@
 <div class="container">
   <div class="row my-5">
     <div class="mx-auto">
-      <h1><strong>自治体選択</strong></h1>
+      <h3><strong>自治体選択</strong></h3>
     </div>
   </div>
   <div class="row">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th class="text-center">自治体名</th>
-              <th colspan="1"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @local_governments.each do |local_government| %>
-            <tr>
-              <td class="text-center"><%= local_government.name %></td>
-              <td class="text-center"><%= link_to "提供数一覧", volunteer_local_government_path(local_government.id) %></td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
-
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="text-center">自治体名</th>
+          <th colspan="1"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @local_governments.each do |local_government| %>
+        <tr>
+          <td class="text-center"><%= local_government.name %></td>
+          <td class="text-center"><%= link_to "不足一覧", volunteer_local_government_path(local_government.id), class: "btn btn-volunteer" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>

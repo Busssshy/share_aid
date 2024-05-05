@@ -1,8 +1,7 @@
 <div class="container">
   <div class="row text-center">
-    <div class="mx-auto col-11 my-5">
-      <h1><strong>SHARE AID</strong>とは</h1>
-      <h1> ... </h1>
+    <div class="mx-auto col-11 my-3">
+      <h1><strong>SHARE AID</strong></h1>
     </div>
     <div class="col-12 mt-3">
       <div class="text-center mt-2">
@@ -14,12 +13,51 @@
            支援の輪を広げませんか？
         </p>
       </div>
-      <!--<div class="text-center mt-5">-->
-      <!--  <%#= image_tag 写真を入れる %>-->
-      <!--</div>-->
-    </div>
+      <div class="col-12 text-center my-5">
+    <%= link_to "不足一覧", volunteer_local_governments_path, class: "btn btn-volunteer" %>
   </div>
-  <div class="col-12 text-center mt-3">
-    <%= link_to "不足一覧", volunteer_local_governments_path, class: "btn btn-outline-secondary" %>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+
+          <div class="swiper-slide">
+            <%= image_tag asset_path('slide1.png'), alt: '' %>
+          </div>
+
+          <div class="swiper-slide">
+            <%= image_tag asset_path('slide2.png'), alt: '' %>
+          </div>
+
+          <div class="swiper-slide">
+            <%= image_tag asset_path('slide3.png'), alt: '' %>
+          </div>
+
+        </div>
+        <!-- ページネーション -->
+        <div class="swiper-pagination"></div>
+        <!-- 前後の矢印 -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+      <script>
+        const swiper = new Swiper(".swiper", {
+        loop: true, // ループ
+        speed: 3000, // 少しゆっくり(デフォルトは300)
+        autoplay: { // 自動再生
+          delay: 3000, // 3秒後に次のスライド
+          disableOnInteraction: false, // 矢印をクリックしても自動再生を止めない
+        },
+        // ページネーション
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        // 前後の矢印
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+      </script>
+    </div>
   </div>
 </div>
