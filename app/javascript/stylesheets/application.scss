@@ -62,3 +62,16 @@ footer {
   flex-direction: column;
   min-height: 95vh;
 }
+
+/*スライドショー*/
+.swiper-slide img {
+  max-width: 80%; /* ページの幅に対して画像の最大幅を80%に制限 */
+  max-height: 80vh; /* ページの高さに対して画像の最大高さを80%に制限 */
+  width: auto; /* 幅を自動調整 */
+  height: auto; /* 高さを自動調整 */
+}
+
+:root {
+  --swiper-navigation-color: #ffffff;
+  --swiper-pagination-color: #ffffff;
+}
