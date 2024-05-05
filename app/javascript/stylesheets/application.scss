@@ -18,3 +18,60 @@ table.cell-right-align thead {
 td.cell-text-align {
   text-align: right;
 }
+
+.title {
+  font-size: 4rem;
+}
+
+/*自治体のカラー*/
+.local_government_color {
+  background-color: #83E1CA;
+}
+
+.btn-local_government {
+  background-color: #83E1CA;
+}
+
+.btn-local_government:hover {
+  background-color: #7CCDB8;
+  border-color: #7CCDB8;
+}
+
+/*ボランティアのカラー*/
+.volunteer_color {
+  background-color: #FFB84D;
+}
+
+.btn-volunteer {
+  background-color: #FFB84D;
+}
+
+.btn-volunteer:hover {
+  background-color: #FF8C00;
+  border-color: #FF8C00;
+}
+
+/*フッター*/
+footer {
+  margin-top: auto;
+  height: 3rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 95vh;
+}
+
+/*スライドショー*/
+.swiper-slide img {
+  max-width: 80%; /* ページの幅に対して画像の最大幅を80%に制限 */
+  max-height: 80vh; /* ページの高さに対して画像の最大高さを80%に制限 */
+  width: auto; /* 幅を自動調整 */
+  height: auto; /* 高さを自動調整 */
+}
+
+:root {
+  --swiper-navigation-color: #ffffff;
+  --swiper-pagination-color: #ffffff;
+}

@@ -1,32 +1,28 @@
 <div class="container">
-
   <div class="row my-5">
     <div class="mx-auto">
-      <h2>マイページ</h2>
+      <h3><b>マイページ</b></h3>
     </div>
   </div>
 
-  <div class="row">
-    <div class="mx-auto">
-
-      <table class="table table_boeder">
-        <tdody>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <table class="table">
+        <tbody>
           <tr>
-            <th>会員情報</th>
-            <td>
-              <%= link_to "確認", edit_volunteer_volunteer_path(current_volunteer) %>
+            <th class="text-center">会員情報</th>
+            <td class="text-center">
+              <%= link_to "確認", edit_volunteer_volunteer_path(current_volunteer), class: "btn btn-volunteer" %>
             </td>
           </tr>
           <tr>
-            <th>予約履歴一覧</th>
-            <td>
-              <%= link_to "確認", volunteer_reserves_path %>
+            <th class="text-center">予約履歴一覧</th>
+            <td class="text-center">
+              <%= link_to "確認", volunteer_reserves_path, class: "btn btn-volunteer" %>
             </td>
           </tr>
-        </tdody>
+        </tbody>
       </table>
-
     </div>
   </div>
-
 </div>

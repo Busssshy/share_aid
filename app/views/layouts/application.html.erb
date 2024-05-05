@@ -8,31 +8,35 @@
     <script src="https://kit.fontawesome.com/e9592687ff.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
   </head>
 
   <body>
-    <% if local_government_signed_in? %>
-        <!--自治体ログイン時ヘッダー-->
-        <%= render 'layouts/local_government_header' %>
-      <% elsif volunteer_signed_in? %>
-        <!--ボランティアログイン時ヘッダー-->
-        <%= render 'layouts/volunteer_header' %>
-      <% else %>
-        <!--ログイン前ヘッダー-->
-    <% end %>
-    <main>
-      <% if flash[:notice] %>
-        <div class="alert alert-success">
-          <%= flash[:notice] %>
-        </div>
+    <div class="wrapper">
+      <% if local_government_signed_in? %>
+          <!--自治体ログイン時ヘッダー-->
+          <%= render 'layouts/local_government_header' %>
+        <% elsif volunteer_signed_in? %>
+          <!--ボランティアログイン時ヘッダー-->
+          <%= render 'layouts/volunteer_header' %>
+        <% else %>
+          <!--ログイン前ヘッダー-->
       <% end %>
-      <% if flash[:alert] %>
-        <div class="alert alert-danger">
-          <%= flash[:alert] %>
-        </div>
-      <% end %>
-        <%= yield %>
-    </main>
-    <%= render 'layouts/footer' %>
+      <main>
+        <% if flash[:notice] %>
+          <div class="alert alert-success">
+            <%= flash[:notice] %>
+          </div>
+        <% end %>
+        <% if flash[:alert] %>
+          <div class="alert alert-danger">
+            <%= flash[:alert] %>
+          </div>
+        <% end %>
+          <%= yield %>
+      </main>
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>

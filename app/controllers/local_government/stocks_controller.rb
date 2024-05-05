@@ -18,11 +18,11 @@ class LocalGovernment::StocksController < ApplicationController
 
   def index
     if params[:old]
-      @stocks = Stock.old.page(params[:page]).per(10)
+      @stocks = current_local_government.stocks.old.page(params[:page]).per(10)
     elsif params[:deadline]
-      @stocks = Stock.deadline.page(params[:page]).per(10)
+      @stocks = current_local_government.stocks.deadline.page(params[:page]).per(10)
     else
-      @stocks = Stock.latest.page(params[:page]).per(10)
+      @stocks = current_local_government.stocks.latest.page(params[:page]).per(10)
     end
   end
 
