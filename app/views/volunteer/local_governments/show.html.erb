@@ -1,19 +1,19 @@
 <div class="container">
   <div class="row my-5">
     <div class="mx-auto">
-      <h1><strong>不足一覧</strong></h1>
+      <h3><strong>不足一覧</strong></h3>
     </div>
   </div>
   <div class="row justify-content-center">
-    <div class="col-auto">
-      <%= form_with model: @reservation_item, url: volunteer_reservations_path, method: :post, local: true do |f| %>
+    <div class="col-12">
+      <%= form_with url: volunteer_reserves_comfirm_path, method: :post, local: true do |f| %>
         <table class="table table-striped">
           <thead>
             <tr>
               <th class="text-center">商品名</th>
               <th class="text-center">備考</th>
               <th class="text-center">必要数</th>
-              <th class="text-center">提供数</th>
+              <th class="text-center" style="width: 10%">提供数</th>
             </tr>
           </thead>
           <tbody>
@@ -32,7 +32,7 @@
         </table>
         <div class="row my-3 justify-content-center">
           <div class="col-auto">
-            <%= f.submit '次へ', class: 'btn btn-secondary' %>
+            <%= f.submit '次へ', class: 'btn btn-volunteer' %>
           </div>
         </div>
       <% end %>

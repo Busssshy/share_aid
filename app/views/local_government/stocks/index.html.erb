@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12 text-center">
-      <h3><b>在庫一覧</b></h3>
+      <h3 class="my-3"><b>在庫一覧</b></h3>
     </div>
   </div>
   <div class="row">
@@ -18,7 +18,7 @@
           <tr>
             <th>品名</th>
             <th>在庫数</th>
-            <th>一人当たりの必要数/日</th>
+            <th>一人当たりの<br>必要数/日</th>
             <th>欠品数</th>
             <th>期限</th>
             <th>残り日数</th>
@@ -33,12 +33,12 @@
             <% @stocks.each do |stock| %>
               <tr>
                 <td><%= stock.name %></td>
-                
-                
+
+
                 <!--↓↓↓暫定です↓↓↓-->
                 <td class="cell-text-align"><%= stock.amount %><%#= stock.amount + ReservationDetails.amount %></td>
-                
-                
+
+
                 <td class="cell-text-align"><%= stock.one_daily_quantity %></td>
                 <td class="cell-text-align"><%= stock.local_government.population * stock.one_daily_quantity - stock.amount %></td>
                 <td class="cell-text-align"><%= stock.deadline.strftime("%Y年%m月%d日") %></td>
@@ -58,7 +58,7 @@
                 <td><%= simple_format(stock.memo) %></td>
                 <td class="cell-text-align"><%= stock.created_at.strftime("%Y年%m月%d日") %></td>
                 <td class="cell-text-align"><%= stock.updated_at.strftime("%Y年%m月%d日") %></td>
-                <td><%= link_to "編集", edit_local_government_stock_path(stock), remote: true %></td>
+                <td><%= link_to "編集", edit_local_government_stock_path(stock), remote: true, class: "btn btn-local_government" %></td>
               </tr>
             <% end %>
           <% else %>
