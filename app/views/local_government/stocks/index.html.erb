@@ -18,7 +18,7 @@
           <tr>
             <th>品名</th>
             <th>在庫数</th>
-            <th>一人当たりの必要数/日</th>
+            <th>一人当たりの<br>必要数/日</th>
             <th>欠品数</th>
             <th>期限</th>
             <th>残り日数</th>
@@ -58,7 +58,7 @@
                 <td><%= simple_format(stock.memo) %></td>
                 <td class="cell-text-align"><%= stock.created_at.strftime("%Y年%m月%d日") %></td>
                 <td class="cell-text-align"><%= stock.updated_at.strftime("%Y年%m月%d日") %></td>
-                <td><%= link_to "編集", edit_local_government_stock_path(stock), remote: true %></td>
+                <td><%= link_to "編集", edit_local_government_stock_path(stock), remote: true, class: "btn btn-local_government" %></td>
               </tr>
             <% end %>
           <% else %>
