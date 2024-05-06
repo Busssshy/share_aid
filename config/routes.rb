@@ -24,9 +24,12 @@ Rails.application.routes.draw do
     get 'homes/about', as: 'about'
     resources :volunteers, only: [:show, :edit, :update]
     resources :local_governments, only: [:index, :show]
-    resources :reserves, only: [:create, :index]
-      post "reserves/comfirm" => "reserves#confirm"
-      get  "reserves/thanks"  => "reserves#thanks"
+    resources :reservation_confirmations, only: [:create]
+    resources :reservations, only: [:create, :index ] do
+      post "reservations/confirm" => "reservations#confirm"
+      # get "reservations/thanks" => "reservations#thanks"
+      get 'thanks', on: :collection
+    end
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

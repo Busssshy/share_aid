@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_04_08_070822) do
+ActiveRecord::Schema.define(version: 2024_05_01_012923) do
 
   create_table "local_governments", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2024_04_08_070822) do
     t.integer "stock_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "amount"
     t.index ["stock_id"], name: "index_reservation_confirmations_on_stock_id"
     t.index ["volunteer_id"], name: "index_reservation_confirmations_on_volunteer_id"
   end
@@ -61,6 +62,8 @@ ActiveRecord::Schema.define(version: 2024_04_08_070822) do
     t.integer "volunteer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "stock_id"
+    t.integer "amount"
     t.index ["volunteer_id"], name: "index_reservations_on_volunteer_id"
   end
 

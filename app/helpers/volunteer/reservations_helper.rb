@@ -1,0 +1,2 @@
+module Volunteer::ReservationsHelper
+end

@@ -1,6 +1,6 @@
 class Stock < ApplicationRecord
-  has_many :reservation_confirmations, dependent: :destroy
-  has_many :volunteers, through: :reservation_confirmations
+  # has_many :reservation_confirmations, dependent: :destroy
+  has_many :volunteers, through: :reservations
   has_many :reservation_details, dependent: :destroy
   has_many :reservations, through: :reservation_details
   has_many :notifications, as: :notifiable, dependent: :destroy
