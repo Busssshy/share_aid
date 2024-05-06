@@ -7,6 +7,7 @@
   <div class="row justify-content-center">
     <div class="col-12">
       <%= form_with url: volunteer_reserves_comfirm_path, method: :post, local: true do |f| %>
+
         <table class="table table-striped">
           <thead>
             <tr>
@@ -23,8 +24,10 @@
               <td class="text-center w-20"><%= stock.memo %></td>
               <td class="text-center w-20"><%= @local_government.population * stock.one_daily_quantity - stock.amount %></td>
               <td class="text-center w-20">
-                <%= f.number_field "stocks[#{stock.id}][quantity]", min: 0, class: 'form-control' %>
-                <%= f.hidden_field "stocks[#{stock.id}][id]", value: stock.id %>
+                <%#= f.number_field "stocks[#{stock.id}][quantity]", min: 0, class: 'form-control' %>
+                <%#= f.hidden_field "stocks[#{stock.id}][id]", value: stock.id %>
+                <%= f.number_field :stock_id %>
+                <%= f.number_field :amount %>
               </td>
             </tr>
             <% end %>

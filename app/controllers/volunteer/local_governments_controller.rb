@@ -9,4 +9,5 @@ class Volunteer::LocalGovernmentsController < ApplicationController
     @reservation_item = Reservation.new
     @stocks = @local_government.stocks
   end
+
 end

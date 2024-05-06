@@ -25,9 +25,11 @@ Rails.application.routes.draw do
     resources :volunteers, only: [:show, :edit, :update]
     resources :local_governments, only: [:index, :show]
     resources :reservation_confirmations, only: [:create]
-    resources :reservations, only: [:create, :index ]
+    resources :reservations, only: [:create, :index ] do
       post "reservations/confirm" => "reservations#confirm"
-      get "reservations/thanks" => "reservations#thanks"
+      # get "reservations/thanks" => "reservations#thanks"
+      get 'thanks', on: :collection
+    end
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
