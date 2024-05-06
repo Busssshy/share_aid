@@ -7,8 +7,8 @@
   <div class="row">
     <div class="col-12">
       <%= link_to '新しい登録順', local_government_stocks_path(latest: "true") %>
-      |<%= link_to '古い登録順', local_government_stocks_path(old: "true") %>
-      |<%= link_to '期限が近い順', local_government_stocks_path(deadline: "true") %>
+      &nbsp;|&nbsp;<%= link_to '古い登録順', local_government_stocks_path(old: "true") %>
+      &nbsp;|&nbsp;<%= link_to '期限が近い順', local_government_stocks_path(deadline: "true") %>
     </div>
   </div>
   <div class="row">
@@ -32,7 +32,7 @@
           <% if @stocks.any? %>
             <% @stocks.each do |stock| %>
               <tr>
-                <td><%= stock.name %></td>
+                <td class="cell-text-align"><%= stock.name %></td>
 
 
                 <!--↓↓↓暫定です↓↓↓-->
@@ -41,7 +41,7 @@
                 <td class="cell-text-align"><%= stock.one_daily_quantity %></td>
                 <td class="cell-text-align"><%= stock.local_government.population * stock.one_daily_quantity - stock.amount %></td>
                 <td class="cell-text-align"><%= stock.deadline.strftime("%Y年%m月%d日") %></td>
-                <td>
+                <td class="cell-text-align">
                   <% if stock.deadline - Date.today > 5 %>
                     <span>あと&nbsp;<%= (stock.deadline - Date.today).to_i %>&nbsp;日</span>
                   <% elsif (0..5).include?(stock.deadline - Date.today) %>
@@ -54,10 +54,10 @@
                     <span class="text-danger">期限が過ぎています</span>
                   <% end %>
                 </td>
-                <td><%= simple_format(stock.memo) %></td>
+                <td class="cell-text-align"><%= simple_format(stock.memo) %></td>
                 <td class="cell-text-align"><%= stock.created_at.strftime("%Y年%m月%d日") %></td>
                 <td class="cell-text-align"><%= stock.updated_at.strftime("%Y年%m月%d日") %></td>
-                <td><%= link_to "編集", edit_local_government_stock_path(stock), remote: true, class: "btn btn-local_government" %></td>
+                <td class="cell-text-center"><%= link_to "編集", edit_local_government_stock_path(stock), remote: true, class: "btn btn-local_government" %></td>
               </tr>
             <% end %>
           <% else %>
