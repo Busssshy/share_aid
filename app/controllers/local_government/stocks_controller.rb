@@ -41,7 +41,8 @@ class LocalGovernment::StocksController < ApplicationController
       flash[:notice] = "編集内容を反映させました。"
       redirect_to local_government_stocks_path
     else
-      render :edit
+      flash[:alert] = "編集内容の保存が出来ませんでした。"
+      redirect_to request.referer
     end
   end
 
