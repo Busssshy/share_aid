@@ -1,0 +1,36 @@
+<div class="container">
+
+  <div class="row my-5">
+    <div class="mx-auto">
+      <h3><strong>予約履歴一覧</strong></h3>
+    </div>
+  </div>
+
+  <div class="row justify-content-center my-5">
+    <table class="table table-striped" style="width: 80%;">
+      <thead>
+        <tr>
+          <th class="text-center">予約日時</th>
+          <th class="text-center">自治体名</th>
+          <th class="text-center">物資名</th>
+          <th class="text-center">備考</th>
+          <th class="text-center">必要数</th>
+          <th class="text-center">提供数</th>
+        </tr>
+      </thead>
+      <% @reservations.each do |reservation| %>
+      <tbody>
+        <tr>
+          <td class="text-center"><%= reservation.created_at.strftime('%Y/%m/%d') %></td>
+          <td class="text-center"><%#= reservation %></td>
+          <td class="text-center"><%= reservation.stocks.map(&:name).join(', ') %></td>
+          <td class="text-center"><%= reservation.stocks.map(&:memo).join(', ') %></td>
+          <td class="text-center"></td>
+          <td class="text-center"></td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+  </div>
+
+</div>

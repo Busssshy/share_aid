@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row my-5">
     <div class="mx-auto">
-      <h3>援助確定</h3>
+      <h3><strong>援助確定</strong></h3>
     </div>
   </div>
 
   <div class="row">
     <div class="mx-auto">
-      助けていただき、ありがとうございます。<br>
+      助けていただき、ありがとうございます。
     </div>
   </div>
   <div class="row mb-3">
@@ -16,26 +16,24 @@
     </div>
   </div>
 
-  <div class="row my-5">
-    <div class="mx-auto">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>物資名</th>
-            <th>提供数</th>
-            <th>援助予約日</th>
-          </tr>
-        </thead>
-        <% @reservation_details.each do |reservation| %>
-        <tbody>
-          <tr>
-            <td><%= reservation.stock.name %></td>
-            <td><%= reservation.amount %></td>
-            <td><%= reservation.created_at.strftime('%Y/%m/%d') %></td>
-          </tr>
-        </tbody>
-        <% end %>
-      </table>
-    </div>
+  <div class="row justify-content-center my-5">
+    <table class="table table-striped" style="width: 80%;">
+      <thead>
+        <tr>
+          <th class="text-center">物資名</th>
+          <th class="text-center">提供数</th>
+          <th class="text-center">援助予約日</th>
+        </tr>
+      </thead>
+      <% @reservation_details.each do |reservation| %>
+      <tbody>
+        <tr>
+          <td class="text-center"><%= reservation.stock.name %></td>
+          <td class="text-center"><%= reservation.amount %></td>
+          <td class="text-center"><%= reservation.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
   </div>
 </div>
