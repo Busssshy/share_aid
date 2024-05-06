@@ -18,18 +18,20 @@
           <th class="text-center">提供数</th>
         </tr>
       </thead>
-      <% @reservations.each do |reservation| %>
-      <tbody>
-        <tr>
+    <% @reservations.each do |reservation| %>
+      <% reservation.reservation_details.each do |detail| %>
+        <tbody>
+          <tr>
           <td class="text-center"><%= reservation.created_at.strftime('%Y/%m/%d') %></td>
-          <td class="text-center"><%#= reservation %></td>
-          <td class="text-center"><%= reservation.stocks.map(&:name).join(', ') %></td>
-          <td class="text-center"><%= reservation.stocks.map(&:memo).join(', ') %></td>
-          <td class="text-center"></td>
-          <td class="text-center"></td>
-        </tr>
-      </tbody>
+          <td class="text-center"><%= detail.stock.local_government.name %></td>
+          <td class="text-center"><%= detail.stock.name %></td>
+          <td class="text-center"><%= detail.stock.memo %></td>
+          <td class="text-center"><%= detail.stock.local_government.population * detail.stock.one_daily_quantity - detail.stock.amount %></td>
+          <td class="text-center"><%= detail.amount %></td>
+          </tr>
+        </tbody>
       <% end %>
+    <% end %>
     </table>
   </div>
 
