@@ -35,8 +35,7 @@
                 <td><%= stock.name %></td>
                 <td class="cell-text-align"><%= stock.amount + @reservation_items.find_by_stock_id(stock.id).try(:amount).to_i %></td>
                 <td class="cell-text-align"><%= stock.one_daily_quantity %></td>
-                <td class="cell-text-align"><%= stock.local_government.population * stock.one_daily_quantity - stock.amount %></td>
-                <td class="cell-text-align"><%= stock.deadline.strftime("%Y年%m月%d日") %></td>
+                <td class="cell-text-align"><%= stock.local_government.population * stock.one_daily_quantity - (stock.amount + @reservation_items.find_by_stock_id(stock.id).try(:amount).to_i) %></td>                <td class="cell-text-align"><%= stock.deadline.strftime("%Y年%m月%d日") %></td>
                 <td>
                   <% if stock.deadline - Date.today > 5 %>
                     <span>あと&nbsp;<%= (stock.deadline - Date.today).to_i %>&nbsp;日</span>
