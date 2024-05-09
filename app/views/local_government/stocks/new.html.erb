@@ -21,7 +21,7 @@
             <b><%= f.label "品名" %></b>
           </div>
           <div class="col-12 col-md-8">
-            <%= f.text_field :name, autofocus: true, placeholder: "1~20文字以内", size:50 %>
+            <%= f.text_field :name, autofocus: true, placeholder: "1~20文字以内", size:46 %>
           </div>
         </div>
         <div class="row my-3">
@@ -29,15 +29,15 @@
             <b><%= f.label "在庫数" %></b>
           </div>
           <div class="col-12 col-md-8">
-            <%= f.text_field :amount, size: 50 %>
+            <%= f.number_field :amount, class: "stock-custom-field" %>
           </div>
         </div>
         <div class="row my-3">
           <div class="col-12 col-md-4">
             <b><%= f.label "一人当たりの必要数/日" %></b>
           </div>
-          <div class="col-12 col-md-8">
-            <%= f.text_field :one_daily_quantity, placeholder: "1日の一人当たりの必要数を入力してください", size: 50 %>
+          <div class="col-12 col-md-8 stock-custom-field">
+            <%= f.number_field :one_daily_quantity, placeholder: "1日の一人当たりの必要数を入力してください", class: "stock-custom-field" %>
           </div>
         </div>
         <div class="row my-3">
@@ -53,7 +53,7 @@
             <b><%= f.label "備考" %></b>
           </div>
           <div class="col-12 col-md-8">
-            <%= f.text_area :memo, placeholder: "200文字以内", size: "50x5" %>
+            <%= f.text_area :memo, placeholder: "200文字以内", size: "46x5" %>
           </div>
         </div>
         <div class="row my-3">
