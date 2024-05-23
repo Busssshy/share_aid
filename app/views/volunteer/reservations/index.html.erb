@@ -26,7 +26,8 @@
           <td class="text-center"><%= detail.stock.local_government.name %></td>
           <td class="text-center"><%= detail.stock.name %></td>
           <td class="text-center"><%= detail.stock.memo %></td>
-          <td class="text-center"><%= detail.stock.local_government.population * detail.stock.one_daily_quantity - detail.stock.amount %></td>
+          <% required_amount = detail.stock.local_government.population * detail.stock.one_daily_quantity - (detail.stock.amount + detail.stock.reservation_details.sum(:amount)) %>
+          <td class="text-center w-20"><%= required_amount.positive? ? required_amount : 0 %></td>
           <td class="text-center"><%= detail.amount %></td>
           </tr>
         </tbody>

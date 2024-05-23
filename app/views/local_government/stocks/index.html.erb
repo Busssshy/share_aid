@@ -32,14 +32,14 @@
           <% if @stocks.any? %>
             <% @stocks.each do |stock| %>
               <tr>
-                <td class="cell-text-align"><%= stock.name %></td>
 
-
-                <!--↓↓↓暫定です↓↓↓-->
-                <td class="cell-text-align"><%= stock.amount %><%#= stock.amount + ReservationDetails.amount %></td>
+                <td><%= stock.name %></td>
+                <td class="cell-text-align"><%= stock.amount + @reservation_items.find_by_stock_id(stock.id).try(:amount).to_i %></td>
 
                 <td class="cell-text-align"><%= stock.one_daily_quantity %></td>
-                <td class="cell-text-align"><%= stock.local_government.population * stock.one_daily_quantity - stock.amount %></td>
+                <% required_amount = stock.local_government.population * stock.one_daily_quantity - (stock.amount + @reservation_items.find_by_stock_id(stock.id).try(:amount).to_i) %>
+                <!--不足していない場合はマイナスの表示にならないように0を表示させる-->
+                <td class="cell-text-align"><%= required_amount.positive? ? required_amount : 0 %></td>
                 <td class="cell-text-align"><%= stock.deadline.strftime("%Y年%m月%d日") %></td>
                 <td class="cell-text-align">
                   <% if stock.deadline - Date.today > 5 %>

@@ -24,6 +24,9 @@ class LocalGovernment::StocksController < ApplicationController
     else
       @stocks = current_local_government.stocks.latest.page(params[:page]).per(10)
     end
+
+    @reservation_items = ReservationDetail.joins(stock: :local_government).where("local_governments.id = ?", current_local_government.id)
+
   end
 
   def edit
