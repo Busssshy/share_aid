@@ -18,6 +18,7 @@
           </thead>
           <tbody>
             <% @stocks.each do |stock| %>
+
             <tr>
               <td class="text-center w-20"><%= stock.name %></td>
               <td class="text-center w-20"><%= stock.memo %></td>
@@ -30,6 +31,7 @@
                 <%= f.number_field :amount %>
               </td>
             </tr>
+
             <% end %>
           </tbody>
         </table>

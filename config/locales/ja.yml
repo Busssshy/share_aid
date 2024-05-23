@@ -1,4 +1,11 @@
 ja:
+  activerecord:
+    attributes:
+      stock:
+        name: 品名
+        amount: 在庫数
+        one_daily_quantity: 一人当たりの必要数/日
+        deadline: 使用期限
   date:
     abbr_day_names:
     - 日
