@@ -1,4 +1,6 @@
 class Volunteer::LocalGovernmentsController < ApplicationController
+  before_action :authenticate_volunteer!
+  
   def index
     @local_governments = LocalGovernment.all
   end

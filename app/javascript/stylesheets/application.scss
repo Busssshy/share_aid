@@ -1,8 +1,13 @@
 @use '~bootstrap/scss/bootstrap';
 
-/*在庫登録画面の使用期限入力フォームサイズ*/
+/*在庫登録画面と在庫更新画面の使用期限入力フォームサイズ*/
 .custom-date-field {
-  width: 440px;
+  width: 52vh;
+}
+
+/*在庫登録画面と在庫更新画面のnumber_fieldサイズ*/
+.stock-custom-field {
+  width: 52vh;
 }
 
 /*在庫登録画面と在庫更新画面の登録ボタンサイズ*/
