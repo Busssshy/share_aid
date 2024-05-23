@@ -11,3 +11,4 @@ class Volunteer::LocalGovernmentsController < ApplicationController
   end
 
 end
+

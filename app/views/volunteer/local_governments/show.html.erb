@@ -6,39 +6,43 @@
   </div>
   <div class="row justify-content-center">
     <div class="col-12">
-      <%= form_with url: volunteer_reserves_comfirm_path, method: :post, local: true do |f| %>
 
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th class="text-center">商品名</th>
-              <th class="text-center">備考</th>
-              <th class="text-center">必要数</th>
-              <th class="text-center" style="width: 10%">提供数</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @stocks.each do |stock| %>
-            <tr>
-              <td class="text-center w-20"><%= stock.name %></td>
-              <td class="text-center w-20"><%= stock.memo %></td>
-              <td class="text-center w-20"><%= @local_government.population * stock.one_daily_quantity - stock.amount %></td>
-              <td class="text-center w-20">
-                <%#= f.number_field "stocks[#{stock.id}][quantity]", min: 0, class: 'form-control' %>
-                <%#= f.hidden_field "stocks[#{stock.id}][id]", value: stock.id %>
-                <%= f.number_field :stock_id %>
-                <%= f.number_field :amount %>
-              </td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
+    <%= form_with model: @reservation_item, url: volunteer_reservations_path, method: :post, local: true do |f| %>
+
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th class="text-center">商品名</th>
+            <th class="text-center">備考</th>
+            <th class="text-center">必要数</th>
+            <th class="text-center">提供数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @stocks.each do |stock| %>
+          <tr>
+            <td class="text-center"><%= stock.name %></td>
+            <td class="text-center"><%= stock.memo %></td>
+            <td class="text-center"><%= @local_government.population * stock.one_daily_quantity - stock.amount %></td>
+            <td class="text-center">
+            <%#= f.hidden_field :stock_id, value: stock.id %>
+            <%#= f.number_field :amount, min: 0, class: 'form-control' %>
+            <%= hidden_field_tag "reservation[reservation_details_attributes][][stock_id]", stock.id %>
+            <%= number_field_tag "reservation[reservation_details_attributes][][amount]", nil, min: 0, class: 'form-control' %>
+
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
         <div class="row my-3 justify-content-center">
           <div class="col-auto">
             <%= f.submit '次へ', class: 'btn btn-volunteer' %>
           </div>
         </div>
-      <% end %>
+    <% end %>
     </div>
   </div>
 </div>
