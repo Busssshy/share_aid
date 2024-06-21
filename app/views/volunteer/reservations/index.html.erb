@@ -1,0 +1,39 @@
+<div class="container">
+
+  <div class="row my-5">
+    <div class="mx-auto">
+      <h3><strong>予約履歴一覧</strong></h3>
+    </div>
+  </div>
+
+  <div class="row justify-content-center my-5">
+    <table class="table table-striped" style="width: 80%;">
+      <thead>
+        <tr>
+          <th class="text-center">予約日時</th>
+          <th class="text-center">自治体名</th>
+          <th class="text-center">物資名</th>
+          <th class="text-center">備考</th>
+          <th class="text-center">必要数</th>
+          <th class="text-center">提供数</th>
+        </tr>
+      </thead>
+    <% @reservations.each do |reservation| %>
+      <% reservation.reservation_details.each do |detail| %>
+        <tbody>
+          <tr>
+          <td class="text-center"><%= reservation.created_at.strftime('%Y/%m/%d') %></td>
+          <td class="text-center"><%= detail.stock.local_government.name %></td>
+          <td class="text-center"><%= detail.stock.name %></td>
+          <td class="text-center"><%= detail.stock.memo %></td>
+          <% required_amount = detail.stock.local_government.population * detail.stock.one_daily_quantity - (detail.stock.amount + detail.stock.reservation_details.sum(:amount)) %>
+          <td class="text-center w-20"><%= required_amount.positive? ? required_amount : 0 %></td>
+          <td class="text-center"><%= detail.amount %></td>
+          </tr>
+        </tbody>
+      <% end %>
+    <% end %>
+    </table>
+  </div>
+
+</div>

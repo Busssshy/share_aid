@@ -18,17 +18,20 @@
           </thead>
           <tbody>
             <% @stocks.each do |stock| %>
+
             <tr>
               <td class="text-center w-20"><%= stock.name %></td>
               <td class="text-center w-20"><%= stock.memo %></td>
-              <td class="text-center w-20"><%= @local_government.population * stock.one_daily_quantity - stock.amount %></td>
+              <% required_amount = @local_government.population * stock.one_daily_quantity - (stock.amount + stock.reservation_details.sum(:amount)) %>
+              <td class="text-center w-20"><%= required_amount.positive? ? required_amount : 0 %></td>
               <td class="text-center w-20">
                 <%#= f.number_field "stocks[#{stock.id}][quantity]", min: 0, class: 'form-control' %>
                 <%#= f.hidden_field "stocks[#{stock.id}][id]", value: stock.id %>
-                <%= f.number_field :stock_id %>
+                <%= f.hidden_field :stock_id, value: stock.id %>
                 <%= f.number_field :amount %>
               </td>
             </tr>
+
             <% end %>
           </tbody>
         </table>

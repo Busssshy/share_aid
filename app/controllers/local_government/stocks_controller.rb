@@ -24,6 +24,9 @@ class LocalGovernment::StocksController < ApplicationController
     else
       @stocks = current_local_government.stocks.latest.page(params[:page]).per(10)
     end
+
+    @reservation_items = ReservationDetail.joins(stock: :local_government).where("local_governments.id = ?", current_local_government.id)
+
   end
 
   def edit
@@ -41,7 +44,8 @@ class LocalGovernment::StocksController < ApplicationController
       flash[:notice] = "編集内容を反映させました。"
       redirect_to local_government_stocks_path
     else
-      render :edit
+      flash[:alert] = "編集内容の保存が出来ませんでした。"
+      redirect_to request.referer
     end
   end
 

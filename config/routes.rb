@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   }
 
   namespace :volunteer do
-    root to: "homes#top"
+    root to: "local_governments#index"
     get 'homes/about', as: 'about'
     resources :volunteers, only: [:show, :edit, :update]
     resources :local_governments, only: [:index, :show]
